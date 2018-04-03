@@ -4,7 +4,7 @@
 tic
 path = get_path;
 experiments = get_experiment_list;
-animal = 201 : 203;
+animal = 202;
 
 %% initialize a gazillion variables
 
