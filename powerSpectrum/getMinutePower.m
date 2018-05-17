@@ -14,7 +14,7 @@ end
 
 if save_data == 0
     %     disp('DATA NOT SAVED!');
-elseif save_data==1
+elseif save_data == 1
     % data structure
     if ~exist(strcat(Path.output,filesep,'results',filesep,'MinutePower',filesep,experiment.name));
         mkdir(strcat(Path.output,filesep,'results',filesep,'MinutePower',filesep,experiment.name));

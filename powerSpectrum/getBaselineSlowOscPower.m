@@ -71,12 +71,16 @@ parameters.powerSpectrum.maxFreq = 8;
 
 % find frequencies ranges
 
-delta = find(baselineSlowPower.baseline.fWelchOsc > 2 & baselineSlowPower.baseline.fWelchOsc < 4);
-slowtheta = find(baselineSlowPower.baseline.fWelchOsc > 4 & baselineSlowPower.baseline.fWelchOsc < 8);
+delta = find(baselineSlowPower.baseline.fWelchFull > 2 & baselineSlowPower.baseline.fWelchFull < 4);
+slowtheta = find(baselineSlowPower.baseline.fWelchFull > 4 & baselineSlowPower.baseline.fWelchFull < 8);
 
 % compute power
-delta_powerOsc=mean(baselineSlowPower.baseline.pxxWelchOsc(delta))*2;
-slowtheta_powerOsc=mean(baselineSlowPower.baseline.pxxWelchOsc(slowtheta))*4;
+if numel(pxxWelchOsc) > 0
+    delta_powerOsc = mean(baselineSlowPower.baseline.pxxWelchOsc(delta)) * 2;
+    slowtheta_powerOsc = mean(baselineSlowPower.baseline.pxxWelchOsc(slowtheta)) * 4;
+else
+    delta_powerOsc = NaN; slowtheta_powerOsc = NaN;
+end
 
 if numel(pxxWelchNonOsc)>0
     delta_powerNonOsc=mean(baselineSlowPower.baseline.pxxWelchNonOsc(delta))*2;

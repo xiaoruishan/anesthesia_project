@@ -1,9 +1,9 @@
- function getBaselineOscComponentsAwake(time,signal,fs,experiment,CSC,save_data,thr)
+ function getBaselineOscComponentsAwake(time, signal, fs, experiment, CSC, save_data, thr)
 %% calc oscTimes,Ampl,Duration, and occurence
 Path = get_path;
 %% Detect osc & calculate power
-[oscStart, oscEnd] = detection_discont_events_awa(signal,fs,thr);
-[OscStructure] = getOscInformation_baseline(time,signal, fs,oscStart,oscEnd);
+[oscStart, oscEnd] = detection_discont_events_awa(signal, fs, thr);
+[OscStructure] = getOscInformation_baseline(time, signal, fs, oscStart, oscEnd);
 OscAmplDurOcc.(['baseline']) = OscStructure;
 
 if save_data == 0
