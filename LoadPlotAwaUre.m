@@ -26,10 +26,10 @@ for n = 1 : length(animal)
         repetitions = 1 : 3;
     end
     for period = repetitions
-        canale = 0;
-        for channel = [experiment.HPreversal-1 : experiment.HPreversal+1]
-            canale = canale+1;
-            load(strcat(path.output,filesep,'results\MUAfiringrate\',experiment.name,filesep,'MUAfiringrate15',num2str(channel),num2str(period),'.mat'))
+%         canale = 0;
+%         for channel = [experiment.HPreversal-1 : experiment.HPreversal+1]
+%             canale = canale+1;
+%             load(strcat(path.output,filesep,'results\MUAfiringrate\',experiment.name,filesep,'MUAfiringrate15',num2str(channel),num2str(period),'.mat'))
 %             load(strcat(path.output,filesep,'results\Lempel-Ziv\',experiment.name,filesep,'Lempel-Ziv15',num2str(channel),num2str(period),'.mat'))
 %             load(strcat(path.output,filesep,'results\ISI\',experiment.name,filesep,'ISI15',num2str(channel),num2str(period),'.mat'))
 %             try
@@ -45,25 +45,25 @@ for n = 1 : length(animal)
 %             load(strcat(path.output,filesep,'results\MUAtimestamps\',experiment.name,filesep,'MUAtimestamps15',num2str(channel),num2str(period),'.mat'))
 %             timestamps = floor(peakLoc./(32000));
 %             spike_count(canale, :) = histcounts(timestamps, edges);
-            MUA(canale, :) = MUAfiringrate;
+%             MUA(canale, :) = MUAfiringrate;
 %             clear PPC_Spectrum
-        end
+%         end
 %         spikes_count = sum(spike_count);
-        if strcmp(experiment.Exp_type,'AWA')
+%         if strcmp(experiment.Exp_type,'AWA')
 %                 spikes_over_time((n+1)/2, 1:5) = median(spike_count, 1);
-                FR(period, (n+1)/2) = nanmedian(MUA);
+%                 FR(period, (n+1)/2) = nanmedian(MUA);
 %                 complexityy(period,canale,(n+1)/2)=numel(LZ.NumRepBin)./LZ.inputLength;
 %                 complexity1(period,canale,(n+1)/2)=LZ.compRatio;
 %                 ISIawa=[ISIawa ISI];
 %                 PPC_awa = nanmean(PPC, 1);
-        elseif strcmp(experiment.Exp_type,'URE') %&& period==1
+%         elseif strcmp(experiment.Exp_type,'URE') %&& period==1
 %                 spikes_over_time(n/2, (1:5) + 5 * period) = median(spike_count, 1);
-                FR(period+1, n/2) = nanmedian(MUA);
+%                 FR(period+1, n/2) = nanmedian(MUA);
 %                 complexityy(period+1,canale,n/2)=numel(LZ.NumRepBin)./LZ.inputLength;
 %                 complexity1(period+1,canale,n/2)=LZ.compRatio;
 %                 ISIure=[ISIure ISI];
 %                 PPC_ure = nanmean(PPC, 1);
-        end
+%         end
 %         clear spike_count
 %     end
 %         complexity = mean(complexityy,2);
@@ -72,13 +72,13 @@ for n = 1 : length(animal)
 %         duration(period,n)=OscAmplDurOcc.baseline.meanDurOsc(1);
 %         amplitude(period,n)=OscAmplDurOcc.baseline.meanAmplOsc_max(1);
 %         occurrence(period,n)=OscAmplDurOcc.baseline.occurrenceOsc(1);
-        load(strcat(path.output,filesep,'results\baselinePower\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
-        thetaOsc(period, n) = baselinePower.baseline.thetaOsc;
-        betaOsc(period, n) = baselinePower.baseline.betaOsc;
-        gammaOsc(period, n) = baselinePower.baseline.gammaOsc;
-        theta(period, n) = baselinePower.baseline.thetaFull;
-        beta(period, n) = baselinePower.baseline.betaFull;
-        gamma(period, n) = baselinePower.baseline.gammaFull;
+%         load(strcat(path.output,filesep,'results\baselinePower\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
+%         thetaOsc(period, n) = baselinePower.baseline.thetaOsc;
+%         betaOsc(period, n) = baselinePower.baseline.betaOsc;
+%         gammaOsc(period, n) = baselinePower.baseline.gammaOsc;
+%         theta(period, n) = baselinePower.baseline.thetaFull;
+%         beta(period, n) = baselinePower.baseline.betaFull;
+%         gamma(period, n) = baselinePower.baseline.gammaFull;
 %         if strcmp(experiment.Exp_type,'AWA')
 %             PowerPlot(:, period, (n+1)  / 2) = baselinePower.baseline.pxxWelchFull;
 %             PowerPlotOsc(:, period, (n+1) / 2) = baselinePower.baseline.pxxWelchOsc;
@@ -86,9 +86,9 @@ for n = 1 : length(animal)
 %             PowerPlot(:, period+1, n / 2) = baselinePower.baseline.pxxWelchFull;
 %             PowerPlotOsc(:, period+1, n / 2) = baselinePower.baseline.pxxWelchOsc;
 %         end
-        load(strcat(path.output,filesep,'results\baselineSlowPower\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
-        rrOsc(period, n) = baselineSlowPower.baseline.betaOsc;
-        rr(period, n) = baselineSlowPower.baseline.betaFull;
+%         load(strcat(path.output,filesep,'results\baselineSlowPower\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
+%         rrOsc(period, n) = baselineSlowPower.baseline.betaOsc;
+%         rr(period, n) = baselineSlowPower.baseline.betaFull;
 %         if strcmp(experiment.Exp_type,'AWA')
 %             PowerPlotSlow(:, period, (n+1)/2) = baselineSlowPower.baseline.pxxWelchFull;
 %             try
@@ -125,28 +125,56 @@ for n = 1 : length(animal)
 %         load(strcat(path.output,filesep,'results\AmpPhaseCorr\',experiment.name,filesep,'15',num2str(CSC),num2str(period),'.mat'))
 %         AmpCorr(period, :, n) = squeeze(mean(AmpPhaseCor(1:23, :), 2));
 %         PhaseCorr(period, :, n) = squeeze(mean(AmpPhaseCor(24:end, :), 2));
-%         load(strcat(path.output,filesep,'results\MinutePower\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
-%         if size(pWelch,1) < 15
-%             pWelch(size(pWelch, 1):15, :) = NaN;
-%         end
-%         if n < 400
-%             if strcmp(experiment.Exp_type,'AWA')
-%                 minutePower(15 * (period - 1) + 1:15 * period, :, (n + 1) / 2) = pWelch;
-%             else
-%                 minutePower(15 * period+1 : 15 * (period + 1), :, n / 2) = pWelch;
-%             end
-%         end
-%         load(strcat(path.output,filesep,'results\MinutePowerOsc\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
-%         if size(pWelchOsc,1) < 15
-%             pWelchOsc(size(pWelchOsc, 1):15, :) = NaN;
-%         end
-%         if n < 400
-%             if strcmp(experiment.Exp_type,'AWA')
-%                 minutePowerOsc(15 * (period - 1) + 1:15 * period, :, (n + 1) / 2) = pWelchOsc;
-%             else
-%                 minutePowerOsc(15 * period+1 : 15 * (period + 1), :, n / 2) = pWelchOsc;
-%             end
-%         end
+        load(strcat(path.output, filesep, 'results\MinutePower\', experiment.name, filesep, ...
+            'CSC15', num2str(CSC), num2str(period), '.mat'))
+        if size(pWelch,1) < 15
+            pWelch(size(pWelch, 1):15, :) = NaN;
+        end
+        if n < 400
+            if strcmp(experiment.Exp_type,'AWA')
+                minutePower(15 * (period - 1) + 1:15 * period, :, (n + 1) / 2) = pWelch;
+            else
+                minutePower(15 * period+1 : 15 * (period + 1), :, n / 2) = pWelch;
+            end
+        end
+        load(strcat(path.output, filesep, 'results\MinutePower\', experiment.name, filesep, ...
+            'CSC15', num2str(CSC), num2str(period), 'median.mat'))
+        if size(pWelch,1) < 15
+            pWelch(size(pWelch, 1):15, :) = NaN;
+        end
+        if n < 400
+            if strcmp(experiment.Exp_type,'AWA')
+                medianMinutePower(15 * (period - 1) + 1:15 * period, :, (n + 1) / 2) = pWelch;
+            else
+                medianMinutePower(15 * period+1 : 15 * (period + 1), :, n / 2) = pWelch;
+            end
+        end
+
+        load(strcat(path.output, filesep, 'results\MinutePowerOsc\', experiment.name, ...
+            filesep, 'CSC15', num2str(CSC), num2str(period), '.mat'))
+        if size(pWelchOsc,1) < 15
+            pWelchOsc(size(pWelchOsc, 1):15, :) = NaN;
+        end
+        if n < 400
+            if strcmp(experiment.Exp_type,'AWA')
+                minutePowerOsc(15 * (period - 1) + 1:15 * period, :, (n + 1) / 2) = pWelchOsc;
+            else
+                minutePowerOsc(15 * period+1 : 15 * (period + 1), :, n / 2) = pWelchOsc;
+            end
+        end
+        load(strcat(path.output, filesep, 'results\MinutePowerOsc\', experiment.name, ...
+            filesep, 'CSC15', num2str(CSC), num2str(period), 'median.mat'))
+        if size(pWelchOsc,1) < 15
+            pWelchOsc(size(pWelchOsc, 1):15, :) = NaN;
+        end
+        if n < 400
+            if strcmp(experiment.Exp_type,'AWA')
+                medianMinutePowerOsc(15 * (period - 1) + 1:15 * period, :, (n + 1) / 2) = pWelchOsc;
+            else
+                medianMinutePowerOsc(15 * period+1 : 15 * (period + 1), :, n / 2) = pWelchOsc;
+            end
+        end
+        
 %         load(strcat(path.output,filesep,'results\SecondPower\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
 %         if size(SecondPower, 1) < 900
 %             SecondPower(size(SecondPower,1) : 900,:)=NaN;
@@ -156,21 +184,21 @@ for n = 1 : length(animal)
 %         else
 %             secondPower(900*(period)+1:900*(period+1),:,n/2) = SecondPower;
 %         end
-        try
-            load(strcat(path.output,filesep,'results\MinuteOsc\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
-        catch
-            signal(1, 1: 15) = NaN;
-        end
-        if size(signal, 2) < 15
-            signal(1, size(signal, 2) : 15) = NaN;
-        end
-        if n < 400
-            if strcmp(experiment.Exp_type,'AWA')
-                MinuteOsc(15*(period-1)+1:15*period,(n+1)/2)=signal;
-            else
-                MinuteOsc(15*(period)+1:15*(period+1),n/2)=signal;
-            end
-        end
+%         try
+%             load(strcat(path.output,filesep,'results\MinuteOsc\',experiment.name,filesep,'CSC15',num2str(CSC),num2str(period),'.mat'))
+%         catch
+%             signal(1, 1: 15) = NaN;
+%         end
+%         if size(signal, 2) < 15
+%             signal(1, size(signal, 2) : 15) = NaN;
+%         end
+%         if n < 400
+%             if strcmp(experiment.Exp_type,'AWA')
+%                 MinuteOsc(15*(period-1)+1:15*period,(n+1)/2)=signal;
+%             else
+%                 MinuteOsc(15*(period)+1:15*(period+1),n/2)=signal;
+%             end
+%         end
 %         load(strcat(path.output,filesep,'results\BaselineCoherence\',experiment.name,filesep,'15',num2str(experiment.HPreversal),num2str(period),'.mat'))
 %         if strcmp(experiment.Exp_type,'AWA')
 %             Coherence(:,n)=ImCoh.Coh;
@@ -216,18 +244,18 @@ toc
 
 %% reshape so that you attach the urethane data to the awake of the same animal
 
-FR=squeeze(reshape(FR,size(FR,1),1,size(FR,3)*size(FR,2))); 
+% FR=squeeze(reshape(FR,size(FR,1),1,size(FR,3)*size(FR,2))); 
 % duration=reshape(duration,size(duration,1)*2,size(duration,2)/2); duration(2:3,:)=[];
 % amplitude=reshape(amplitude,size(amplitude,1)*2,size(amplitude,2)/2); amplitude(2:3,:)=[];
 % occurrence=reshape(occurrence,size(occurrence,1)*2,size(occurrence,2)/2); occurrence(2:3,:)=[];
-rr=reshape(rr,size(rr,1)*2,size(rr,2)/2); rr(2:3,:)=[];
-theta=reshape(theta,size(theta,1)*2,size(theta,2)/2); theta(2:3,:)=[];
-beta=reshape(beta,size(beta,1)*2,size(beta,2)/2); beta(2:3,:)=[];
-gamma=reshape(gamma,size(gamma,1)*2,size(gamma,2)/2); gamma(2:3,:)=[];
-rrOsc=reshape(rrOsc,size(rrOsc,1)*2,size(rrOsc,2)/2); rrOsc(2:3,:)=[];
-thetaOsc=reshape(thetaOsc,size(thetaOsc,1)*2,size(thetaOsc,2)/2); thetaOsc(2:3,:)=[];
-betaOsc=reshape(betaOsc,size(betaOsc,1)*2,size(betaOsc,2)/2); betaOsc(2:3,:)=[];
-gammaOsc=reshape(gammaOsc,size(gammaOsc,1)*2,size(gammaOsc,2)/2); gammaOsc(2:3,:)=[];
+% rr=reshape(rr,size(rr,1)*2,size(rr,2)/2); rr(2:3,:)=[];
+% theta=reshape(theta,size(theta,1)*2,size(theta,2)/2); theta(2:3,:)=[];
+% beta=reshape(beta,size(beta,1)*2,size(beta,2)/2); beta(2:3,:)=[];
+% gamma=reshape(gamma,size(gamma,1)*2,size(gamma,2)/2); gamma(2:3,:)=[];
+% rrOsc=reshape(rrOsc,size(rrOsc,1)*2,size(rrOsc,2)/2); rrOsc(2:3,:)=[];
+% thetaOsc=reshape(thetaOsc,size(thetaOsc,1)*2,size(thetaOsc,2)/2); thetaOsc(2:3,:)=[];
+% betaOsc=reshape(betaOsc,size(betaOsc,1)*2,size(betaOsc,2)/2); betaOsc(2:3,:)=[];
+% gammaOsc=reshape(gammaOsc,size(gammaOsc,1)*2,size(gammaOsc,2)/2); gammaOsc(2:3,:)=[];
 % osc_time=duration.*occurrence./60*100;
 % ppc_theta=reshape(ppc_theta,size(ppc_theta,1)*2,size(ppc_theta,2)/2); ppc_theta(2:3,:)=[];
 % ppc_beta=reshape(ppc_beta,size(ppc_beta,1)*2,size(ppc_beta,2)/2); ppc_beta(2:3,:)=[];
@@ -241,10 +269,10 @@ gammaOsc=reshape(gammaOsc,size(gammaOsc,1)*2,size(gammaOsc,2)/2); gammaOsc(2:3,:
 % complexity=squeeze(reshape(complexity,size(complexity,1),1,size(complexity,3)*size(complexity,2))); 
 % complexity1=squeeze(reshape(complexity1,size(complexity1,1),1,size(complexity1,3)*size(complexity1,2)));
 % 
-normFR=FR./osc_time;
+% normFR=FR./osc_time;
 % 
 % 
-oscillations = squeeze(median(reshape(MinuteOsc, 15, [], size(MinuteOsc, 2))));
+% oscillations = squeeze(median(reshape(MinuteOsc, 15, [], size(MinuteOsc, 2))));
 
 %% plot firing rate over time
 
@@ -420,20 +448,35 @@ oscillations = squeeze(median(reshape(MinuteOsc, 15, [], size(MinuteOsc, 2))));
 % xlim([2 48]); title(' Conditional Entropy - HP'); ylabel(' Conditional Entropy'); xlabel('Frequency (Hz)'); set(gca,'FontSize',20)
 %% plot minute power
 
-% redbluish = cbrewer('div', 'RdBu', 100);
-% pre_median = nanmedian(minutePower(1 : 15, :, :));
-% AMI = squeeze(nanmedian(bsxfun(@minus, minutePower, pre_median) ./ bsxfun(@plus, minutePower, pre_median), 3));
-% 
-% figure; imagesc(linspace(1,60,60),linspace(1,250,501),AMI',[-1 1]); axis xy; ylim([0 100])
-% hold on; plot([15 15],get(gca,'ylim'),'r','linewidth',3); colormap(flipud(redbluish)); colorbar
-% title('Minute by minute power (z-score)'); ylabel('Frequency (Hz)'); xlabel('Time (minutes)'); set(gca,'FontSize',20)
-% 
-% pre_median_osc = nanmedian(minutePowerOsc(1 : 15, :, :));
-% AMIosc = squeeze(nanmedian(bsxfun(@minus, minutePowerOsc, pre_median_osc) ./ bsxfun(@plus, minutePowerOsc, pre_median_osc), 3));
-% 
-% figure; imagesc(linspace(1,60,60),linspace(1,250,501),AMIosc',[-1 1]); axis xy; ylim([0 100])
-% hold on; plot([15 15],get(gca,'ylim'),'r','linewidth',3); colormap(flipud(redbluish)); colorbar
-% title('Minute by minute power (z-score)'); ylabel('Frequency (Hz)'); xlabel('Time (minutes)'); set(gca,'FontSize',20)
+redbluish = cbrewer('div', 'RdBu', 100);
+pre_median = nanmedian(minutePower(1 : 15, :, :));
+AMI = squeeze(nanmedian(bsxfun(@minus, minutePower, pre_median) ./ bsxfun(@plus, minutePower, pre_median), 3));
+
+figure; imagesc(linspace(1,60,60),linspace(1,250,501),AMI',[-1 1]); axis xy; ylim([0 100])
+hold on; plot([15 15],get(gca,'ylim'),'r','linewidth',3); colormap(flipud(redbluish)); colorbar
+title('Minute by minute power (z-score)'); ylabel('Frequency (Hz)'); xlabel('Time (minutes)'); set(gca,'FontSize',20)
+
+redbluish = cbrewer('div', 'RdBu', 100);
+pre_median = nanmedian(medianMinutePower(1 : 15, :, :));
+AMI = squeeze(nanmedian(bsxfun(@minus, medianMinutePower, pre_median) ./ bsxfun(@plus, medianMinutePower, pre_median), 3));
+
+figure; imagesc(linspace(1,60,60),linspace(1,250,501),AMI',[-1 1]); axis xy; ylim([0 100])
+hold on; plot([15 15],get(gca,'ylim'),'r','linewidth',3); colormap(flipud(redbluish)); colorbar
+title('Minute by minute power (z-score)'); ylabel('Frequency (Hz)'); xlabel('Time (minutes)'); set(gca,'FontSize',20)
+
+pre_median_osc = nanmedian(minutePowerOsc(1 : 15, :, :));
+AMIosc = squeeze(nanmedian(bsxfun(@minus, minutePowerOsc, pre_median_osc) ./ bsxfun(@plus, minutePowerOsc, pre_median_osc), 3));
+
+figure; imagesc(linspace(1,60,60),linspace(1,250,501),AMIosc',[-1 1]); axis xy; ylim([0 100])
+hold on; plot([15 15],get(gca,'ylim'),'r','linewidth',3); colormap(flipud(redbluish)); colorbar
+title('Minute by minute osc power (z-score)'); ylabel('Frequency (Hz)'); xlabel('Time (minutes)'); set(gca,'FontSize',20)
+
+pre_median_osc = nanmedian(medianMinutePowerOsc(1 : 15, :, :));
+AMIosc = squeeze(nanmedian(bsxfun(@minus, medianMinutePowerOsc, pre_median_osc) ./ bsxfun(@plus, medianMinutePowerOsc, pre_median_osc), 3));
+
+figure; imagesc(linspace(1,60,60),linspace(1,250,501),AMIosc',[-1 1]); axis xy; ylim([0 100])
+hold on; plot([15 15],get(gca,'ylim'),'r','linewidth',3); colormap(flipud(redbluish)); colorbar
+title('Median minute by minute osc power (z-score)'); ylabel('Frequency (Hz)'); xlabel('Time (minutes)'); set(gca,'FontSize',20)
 
 
 % OLD VERSION WITH Z-SCORE
